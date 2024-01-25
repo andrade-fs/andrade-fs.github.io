@@ -59,6 +59,3 @@ And add to pfsense machine:
 ![pfsnse-installer-copyrigth](../assets/img/pfsense-wan-lan-dmz/pfsnse-installer-copyrigth.png)
 
 > Set install pfSense
-
-![pfsnse-installer-pfsense
-](pfsnse-installer-pfsense.png)
