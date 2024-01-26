@@ -14,7 +14,12 @@ tags: [Michelin, Repsol]     # TAG names should always be lowercase
 > Alexis deberias cambiar de cohe.
 {: .prompt-info }
 
+
 ## INTRO
+
+CARTA
+
+![Alt text](../assets/img/aviaxe/image-20.png)
 
 > Primer plano nada más sentarse
 ![Alt text](../assets/img/aviaxe/image-2.png)
@@ -200,3 +205,6 @@ Puntuacion guía ANDRADE FS: **9/10**
 ### Recomando, aplicamos sello de calidad by Andrade FS
 
 ![Alt text](../assets/img/aviaxe/image-15.png)
+
+
+
