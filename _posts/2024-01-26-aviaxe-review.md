@@ -195,3 +195,8 @@ Puntuacion guía ANDRADE FS: **9/10**
 - Regusto: 9/10
 
 ![Alt text](../assets/img/aviaxe/image-14.png)
+
+
+### Recomando, aplicamos sello de calidad by Andrade FS
+
+![Alt text](../assets/img/aviaxe/image-15.png)
