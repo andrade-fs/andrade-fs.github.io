@@ -1,8 +1,8 @@
 ---
 title: Self-host an automated Jellyfin media streaming stack
 date: 2024-01-25 22:30:45 +0100
-categories: [Network, Firewall]
-tags: [HomeLab, security]
+categories: [HomeLab, Jellyfin]
+tags: [HomeLab, Jellyfin, -arr]
 pin: true
 math: true
 mermaid: true
