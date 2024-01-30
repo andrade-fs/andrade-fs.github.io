@@ -53,7 +53,7 @@ Oficial Documentations:
 ```bash
 curl https://repo.jellyfin.org/install-debuntu.sh | sudo bash
 ```
-- Once installed we will have access via web ([http://ip-machine:8096](http://ip-machine:8096))
+- Once installed we will have access via web (http://ip-machine:8096)
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208001956.png)
 - Create an account
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208002120.png)
@@ -96,7 +96,7 @@ sudo systemctl restart transmission-daemon
 sudo systemctl enable transmission-daemon
 ```
 
-- Con esto, ya tendremos disponible transmissión en el panel web [http://ip-maquina:9091/](http://ip-maquina:9091/) pero antes necesitamos configurar un par de cosas:
+- Con esto, ya tendremos disponible transmissión en el panel web http://ip-maquina:9091/ pero antes necesitamos configurar un par de cosas:
 	- Paramos el servicio:
 	```bash
 	sudo systemctl stop transmission-daemon
@@ -165,7 +165,7 @@ chown jackett:jackett -R "/opt/Jackett"
 sudo ./install_service_systemd.sh && systemctl status jackett.service && cd - && echo -e "\nVisit http://127.0.0.1:9117"
 ```
 
-- Con esto podremos ver en nuestro navegador desde [http://ip-machine:9117](http://ip-machine:9117)
+- Con esto podremos ver en nuestro navegador desde http://ip-machine:9117
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208013114.png)
 
 Añade tantos indexadores como quieras:
