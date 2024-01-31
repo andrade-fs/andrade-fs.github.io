@@ -34,7 +34,6 @@ image:
 - **Transmission** - torrent client to download media.
     - We can use any other torrent client like qBittorrent, etc...
 - **Jellyseerr** - webapp for users to discover and request movies and TV shows.
-- **Bazarr** - scans available media and downloads subtitles for it.
 ![asdasd](../assets/img/media-streaming-stack/20231207230141.png)
 
 - Build on docker: [Guide](https://zerodya.net/self-host-jellyfin-media-streaming-stack/)
@@ -43,13 +42,12 @@ image:
 ---
 Oficial Documentations:
 - [JellyFin](https://jellyfin.org/docs/general/installation/)
-- [Bazarr](https://wiki.bazarr.media/Getting-Started/Installation/Linux/linux/)
 - [Radarr](https://wiki.servarr.com/radarr/installation/linux)
 - [Sonarr](https://sonarr.tv/#downloads-v3-linux)
 - [JellySeer](https://github.com/Fallenbagel/jellyseerr)
 ## JellyFin
 ---
-- Ejecutamos en un terminal
+- EIn terminal we execute:
 ```bash
 curl https://repo.jellyfin.org/install-debuntu.sh | sudo bash
 ```
@@ -69,13 +67,13 @@ mkdir /media/tvshows
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208002158.png)
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208002542.png)
 
-- I create 3 librarias ( movies, anime, shows )
+- I create 3 libraries ( movies, anime, shows )
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208003028.png)
 
 - Set our preferred metadata Language
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208003059.png)
 
-- Si queremos acceder desde otra red, seleccionamos " allow remote...",  si lo vamos a ver desde localhost, la deseleccionamos.
+- If we want to access from another network, we select "allow remote...", if we are going to see it from localhost, we deselect it.
 
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208003136.png)
 
@@ -89,68 +87,38 @@ Now, you can select your jellyfIn server, and login it.
 ## Transmission
 ---
 
-- En terminal ejecutamos:
+- In terminal we execute:
 ```bash
 sudo apt install transmission-cli transmission-daemon
 sudo systemctl restart transmission-daemon
 sudo systemctl enable transmission-daemon
 ```
 
-- Con esto, ya tendremos disponible transmissión en el panel web http://ip-maquina:9091/ pero antes necesitamos configurar un par de cosas:
-	- Paramos el servicio:
+- With this, we will have streaming available in the web panel http://ip-maquina:9091/ but first we need to configure a couple of things:
+	- We stop the service
 	```bash
 	sudo systemctl stop transmission-daemon
 	```
-	- Editamos el archivo de configuración
+	- Edit the configuration file
 
 ```bash 
 sudo nano /etc/transmission-daemon/settings.json
 ```
 
-- Añadir redes a la whitelist, en mi caso:
+- Add networks to the whitelist, in my case:
 
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208010606.png)
-- Cambiar usuario y su contraseña por maior seguridad:
+- Change user and password for better security:
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208010756.png)
 
-- Levantamos el servicio de nuevo, nos aparecerá un alert para iniciar sesión.
+- We raise the service again, we will see an alert to log in:
 ```bash
 sudo systemctl start transmission-daemon
 ```
 
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208011111.png)
 
-## Bazarr
----
-- Instalamos los requisitos
-```bash
-sudo apt-get install python3-dev python3-pip python3-distutils unrar unzip
-```
-- En Debian, el paquete "unrar" se encuentra en el repositorio "non-free". Puedes habilitar este repositorio y luego instalar "unrar" con el siguiente procedimiento:
-```bash
-sudo nano /etc/apt/sources.list 
-```
-- Asegúrate de que tu archivo `sources.list` incluya "non-free" al final de las líneas de repositorio. Por ejemplo:
-```bash
-deb http://deb.debian.org/debian/ buster main contrib non-free  
-deb-src http://deb.debian.org/debian/ buster main contrib non-free
-```
 
-- Actualizamos e instalamos 
-```bash
-sudo apt update  
-```
-
-- Antes de copiar y pegar, revisad que la release 1.4.0 sea la última:
-
-```bash
-wget https://github.com/morpheus65535/bazarr/releases/download/v1.4.0/bazarr.zip
-sudo mkdir /opt/bazarr
-sudo unzip bazarr.zip -d /opt/bazarr
-cd /opt/bazarr
-```
-
-[TODO ]
 
 ## Jackett
 ----
@@ -165,11 +133,10 @@ chown jackett:jackett -R "/opt/Jackett"
 sudo ./install_service_systemd.sh && systemctl status jackett.service && cd - && echo -e "\nVisit http://127.0.0.1:9117"
 ```
 
-- Con esto podremos ver en nuestro navegador desde http://ip-machine:9117
+- With this we will be able to see in our browser from http://ip-machine:9117:
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208013114.png)
 
-Añade tantos indexadores como quieras:
-
+>Add as many indexers as you want:
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208013356.png)
 
 ## Radarr
@@ -179,7 +146,7 @@ Añade tantos indexadores como quieras:
 sudo groupadd media && sudo adduser radarr --ingroup media
 ```
 
-- Instalamos requisitos
+- We install requirements:
 
 ```bash
 sudo apt install curl sqlite3
@@ -217,20 +184,20 @@ sudo chown radarr:media -R /opt/Radarr
 
 ```bash
 cat << EOF | sudo tee /etc/systemd/system/radarr.service > /dev/null
-[Unit]
-Description=Radarr Daemon
-After=syslog.target network.target
-[Service]
-User=radarr
-Group=media
-Type=simple
+	[Unit]
+	Description=Radarr Daemon
+	After=syslog.target network.target
+	[Service]
+	User=radarr
+	Group=media
+	Type=simple
 
-ExecStart=/opt/Radarr/Radarr -nobrowser -data=/var/lib/radarr/
-TimeoutStopSec=20
-KillMode=process
-Restart=on-failure
-[Install]
-WantedBy=multi-user.target
+	ExecStart=/opt/Radarr/Radarr -nobrowser -data=/var/lib/radarr/
+	TimeoutStopSec=20
+	KillMode=process
+	Restart=on-failure
+	[Install]
+	WantedBy=multi-user.target
 EOF
 ```
 
@@ -321,40 +288,40 @@ yarn start
 - 
 	- Service:
 	```bash
-cat << EOF | sudo tee /etc/systemd/system/jellyseerr.service > /dev/null
+		cat << EOF | sudo tee /etc/systemd/system/jellyseerr.service > /dev/null
 
-[Unit]
+		[Unit]
 
-Description=Jellyseerr Service
+		Description=Jellyseerr Service
 
-Wants=network-online.target
+		Wants=network-online.target
 
-After=network-online.target
+		After=network-online.target
 
-​
+		​
 
-[Service]
+		[Service]
 
-EnvironmentFile=/etc/jellyseerr/jellyseerr.conf
+		EnvironmentFile=/etc/jellyseerr/jellyseerr.conf
 
-Environment=NODE_ENV=production
+		Environment=NODE_ENV=production
 
-Type=exec
+		Type=exec
 
-Restart=on-failure
+		Restart=on-failure
 
-WorkingDirectory=/opt/jellyseerr
+		WorkingDirectory=/opt/jellyseerr
 
-ExecStart=/usr/bin/node dist/index.js
+		ExecStart=/usr/bin/node dist/index.js
 
-​
+		​
 
-[Install]
+		[Install]
 
-WantedBy=multi-user.target
+		WantedBy=multi-user.target
 
-EOF
-```
+		EOF
+	```
 
 - Environmentfile
 
@@ -425,9 +392,9 @@ Radarr neeed an authentication...
  
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208160833.png)
 
-> Algunos indexadores darán error, esto puede ser pq el torrent que estámos indexando está caido, no es para pelis ( si estamos en radarr) o no es para series (si estamos en sonarr)
+> Some indexers will give error, this can be because the torrent we are indexing is down, it is not for movies (if we are in radarr) or it is not for series (if we are in sonarr).
 
-Añade tantos indexadores como guste.
+Add as many indexers as you like.
 
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208162139.png)
 
@@ -449,11 +416,9 @@ $ sudo chown -R radarr:media /media/movies/
 
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208163823.png)
 
-### Create new profils
-
-> Esto es para pode decargar contenido en español, con la calidad que nosotros marquemos.
-> Lo podemos ver en Settings > Profiles
-
+### Create new profile
+>This is to be able to download content in Spanish, with the quality that we mark. 
+>We can see it in Settings > Profiles
 
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208171127.png)
 
@@ -486,7 +451,7 @@ And thas all...
 
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208171308.png)
 
-Podemos ver como se descarga desde:
+We can see how to download it from:
 
 - Transmission:
 ![ALT IMAGE](../assets/img/media-streaming-stack/20231208171423.png)
