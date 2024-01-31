@@ -234,5 +234,5 @@ In first instance a very basic dmz would be like this:
 
 
 
-🚀 Don’t forget to check out the 🚀 [VPN configuration](/posts/vpn-configuration) to improve your PfSense setup.
+🚀 Don’t forget to check out the 🚀 [DNS & AdBlock](/posts/adblock-configuration/) to improve your PfSense setup.
 

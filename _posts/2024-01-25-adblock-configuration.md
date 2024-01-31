@@ -134,7 +134,7 @@ We create a new area:
 ![ALT IMG](../assets/img/pfsense-dns-adblocker/20231207182425.png)
 ![ALT IMG](../assets/img/pfsense-dns-adblocker/20231207182439.png)
 
-> En “Zone Domain record”, añadimos los dominios que nos interesen, si no tenemos ninguno para añadir, añadimos el pfsense, ya que minimo necesita 1.
+> In "Zone Domain record", we add the domains that we are interested in, if we do not have any to add, we add the pfsense, since it needs at least 1.
 
 - Save the changes and that's it.
 
@@ -144,7 +144,7 @@ Before validating that everything works, we make sure that pfsense uses the dns 
 
 ![ALT IMG](../assets/img/pfsense-dns-adblocker/20231207182645.png)
 
-> En la instalación añadí "saf.local", ".local" está reservado por lo que no podremos usarlo en este caso.
+> In the installation I added "saf.local", ".local" is reserved so we will not be able to use it in this case.
 
 
 
@@ -175,3 +175,6 @@ It works for us!
 - Adguard dashboard:
 
 ![Alt text](../assets/img/pfsense-dns-adblocker/adguard-dashboard.png)
+
+
+🚀 Don’t forget to check out the 🚀 [VPN configuration](/posts/vpn-configuration) to improve your PfSense setup.
