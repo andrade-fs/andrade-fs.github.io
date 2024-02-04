@@ -211,6 +211,8 @@ http {
     dav_methods PUT;
   }
 }' > /tmp/bad.conf
+
+sudo nginx -c  /tmp/bad.conf
 ```
 
 and we can check that if is up:
