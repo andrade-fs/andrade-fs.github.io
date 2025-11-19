@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+ruby "3.4.4"
 source "https://rubygems.org"
 
 gem "jekyll-theme-chirpy", "~> 6.4", ">= 6.4.2"
@@ -14,7 +14,6 @@ gem "pdf-reader", "~> 2.15"
 gem "typhoeus", "~> 1.5"
 gem "tiff", "~> 0.1"
 gem "ttfunk", "~> 1.8"
-gem "asciibinder", "~> 2.0" # Often used with ttfunk
 gem "ruby-rc4", "~> 0.1"
 gem "afm", "~> 1.0"
 gem "hashery", "~> 2.1"
