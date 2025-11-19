@@ -1,11 +1,11 @@
 # frozen_string_literal: true
-ruby "3.4.4"
+
 source "https://rubygems.org"
 
 gem "jekyll-theme-chirpy", "~> 6.4", ">= 6.4.2"
 
 group :test do
-  gem "html-proofer", "~> 5.1" # Updated to match the version in the error log
+  gem "html-proofer", "~> 5.1"
 end
 
 # Add the critical dependencies that were missing
@@ -43,3 +43,6 @@ gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
 
 # Lock `http_parser.rb` gem to `v0.6.x` on JRuby builds
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
+
+# Specify Ruby version
+ruby "3.4.4"
