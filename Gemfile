@@ -23,21 +23,9 @@
 # gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 gem "jekyll", "~> 4.3"
 gem "jekyll-theme-chirpy", "~> 6.5"
 
-group :jekyll_plugins do
-  gem "jekyll-paginate"
-  gem "jekyll-archives"
-  gem "jekyll-redirect-from"
-  gem "jekyll-seo-tag"
-  gem "jekyll-sitemap"
-  gem "jekyll-include-cache"
-end
-
-# Todo esto NO debe cargarse en Cloudflare
-group :development, :test do
-  gem "html-proofer"
-end
+# NO añadas html-proofer, nokogiri ni nada extra
